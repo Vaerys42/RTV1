@@ -12,13 +12,20 @@
 
 #include "../rtv1.h"
 
+void		window(t_rt *rt)
+{
+	mlx_hook(rt->data->mlx_window, 2, 1L << 0, my_key_press, rt);
+	mlx_loop(rt->data->mlx);
+}
+
 int			main(void)
 {
 	t_rt		*rt;
 
-	if ((rt = (t_rt*)malloc(sizeof(rt))) == NULL)
+	if (!(rt = (t_rt*)malloc(sizeof(t_rt))))
 		ft_malloc_error();
 	ft_ini(rt);
 	ft_raytracing(rt);
+	window(rt);
 	return (0);
 }

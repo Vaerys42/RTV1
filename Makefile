@@ -5,9 +5,10 @@ SRC =	src/main.c \
 		src/error.c \
 		src/create_object.c \
 		src/raytracing.c \
-		src/ft_check_object.c 
+		src/ft_check_object.c \
+		src/key.c 
 
-LIBS =	SDL/Versions/A/SDL2 libft/libft.a
+LIBS = -framework OpenGL -framework Appkit minilibx_macos/libmlx.a libft/libft.a
 
 OBJ =	$(patsubst src/%.c,obj/%.o,$(SRC))
 

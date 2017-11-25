@@ -18,7 +18,6 @@
 
 # include "libft/includes/libft.h"
 # include "minilibx_macos/mlx.h"
-# include "SDL/Headers/SDL.h"
 
 typedef	struct			s_coo
 {
@@ -29,7 +28,13 @@ typedef	struct			s_coo
 
 typedef	struct			s_data
 {
-	SDL_Window			*window;
+	void				*mlx;
+	void				*mlx_window;
+	void				*mlx_image;
+	char 				*image_string;
+	int					s_l;
+	int					bpp;
+	int					endian;
 }						t_data;			
 
 typedef	struct 			s_sphere
@@ -48,6 +53,7 @@ typedef	struct			s_rt
 	t_coo				*ray;
 	t_coo				*cam;
 	t_coo				*dir;
+	int					random;
 }						t_rt;
 
 void					ft_malloc_error(void);
