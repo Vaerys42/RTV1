@@ -37,19 +37,46 @@ typedef	struct			s_data
 	int					endian;
 }						t_data;			
 
-typedef	struct 			s_sphere
+typedef struct 			s_cylinder
 {
-	int					type;
-	t_coo				*ori;
+	t_coo				*o;
 	float				radius;
 	int					color;
-	void				*next;
+	float				height;
+}						t_cylinder;
+
+typedef	struct 			s_cone
+{
+	t_coo				*o;
+	float				radius;
+	int					color;
+	float				height;
+	struct s_cone		*next;
+}						t_cone;
+
+typedef	struct 			s_sphere
+{
+	t_coo				*o;
+	float				radius;
+	int					color;
+	struct s_sphere		*next;
 }						t_sphere;
+
+typedef	struct 			s_plane
+{
+	int					color;
+	struct s_plane		*next;
+}						t_plane;
+
+typedef	struct 			s_ray
+{
+	t_coo				*ori;
+	t_coo				*dir;
+}						t_ray;
 
 typedef	struct			s_rt
 {
 	t_data				*data;
-	t_sphere			*object;
 	t_coo				*ray;
 	t_coo				*cam;
 	t_coo				*dir;

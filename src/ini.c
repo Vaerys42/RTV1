@@ -32,9 +32,9 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->object->radius = 300;
 	rt->object->color = 0xFFFFFF;
 	rt->object->next = NULL;
-	rt->object->ori->x = 200;
-	rt->object->ori->z = 200;
-	rt->object->ori->z = 200;
+	rt->object->o->x = 200;
+	rt->object->o->z = 200;
+	rt->object->o->z = 200;
 }
 
 void	ft_ini(t_rt *rt)
