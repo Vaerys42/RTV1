@@ -35,6 +35,7 @@ typedef	struct			s_data
 	int					s_l;
 	int					bpp;
 	int					endian;
+	int					*image_int;
 }						t_data;			
 
 typedef struct 			s_cylinder
@@ -70,7 +71,7 @@ typedef	struct 			s_plane
 
 typedef	struct 			s_ray
 {
-	t_coo				*ori;
+	t_coo				*o;
 	t_coo				*dir;
 }						t_ray;
 
@@ -81,6 +82,8 @@ typedef	struct			s_rt
 	t_coo				*cam;
 	t_coo				*dir;
 	int					random;
+	t_sphere			*sphere;
+	t_coo				*ray_ori;
 }						t_rt;
 
 void					ft_malloc_error(void);
@@ -99,5 +102,7 @@ void					ft_create_sphere(t_rt *rt, char **line);
 void					ft_raytracing(t_rt *rt);
 
 int						ft_check_object(t_rt *rt);
+
+void					ft_add_vect(t_coo *vect1, t_coo *vect2);
 
 #endif

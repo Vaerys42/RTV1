@@ -14,14 +14,14 @@
 
 int			ft_check_sphere(t_coo *coo, t_sphere *sph)
 {
-	float		x;
-	float		y;
-	float		z;
-	float		check;
+	float			x;
+	float			y;
+	float			z;
+	float			check;
 
-	x = coo->x - sph->ori->x;
-	y = coo->y - sph->ori->y;
-	z = coo->z - sph->ori->z;
+	x = coo->x - sph->o->x;
+	y = coo->y - sph->o->y;
+	z = coo->z - sph->o->z;
 	check = (x * x) + (y * y) + (z * z);
 	if (check == (sph->radius * sph->radius))
 		return (sph->color);
@@ -30,7 +30,10 @@ int			ft_check_sphere(t_coo *coo, t_sphere *sph)
 
 int			ft_check_object(t_rt *rt)
 {
-	if (rt->object->type == 1)
-		return (ft_check_sphere(rt->ray, rt->object));
+	int		color;
+
+	color = ft_check_sphere(rt->ray, rt->sphere);
+	if (color != 0x000000)
+		return (color);
 	return (0x000000);
 }
