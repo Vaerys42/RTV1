@@ -32,7 +32,7 @@ int			ft_check_object(t_rt *rt)
 {
 	int		color;
 
-	color = ft_check_sphere(rt->ray, rt->sphere);
+	color = ft_check_sphere(rt->ray_ori, rt->sphere);
 	if (color != 0x000000)
 		return (color);
 	return (0x000000);

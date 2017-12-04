@@ -38,8 +38,8 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->sphere->radius = 300;
 	rt->sphere->color = 0xFFFFFF;
 	rt->sphere->next = NULL;
-	rt->sphere->o->x = 200;
-	rt->sphere->o->z = 200;
+	rt->sphere->o->x = 350;
+	rt->sphere->o->y = 300;
 	rt->sphere->o->z = 200;
 }
 
