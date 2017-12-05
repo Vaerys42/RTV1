@@ -12,19 +12,15 @@
 
 #include "../rtv1.h"
 
-int			ft_check_sphere(t_coo *coo, t_sphere *sph)
+int			ft_check_sphere(t_rt *rt)
 {
-	float			x;
-	float			y;
-	float			z;
 	float			check;
 
-	x = coo->x - sph->o->x;
-	y = coo->y - sph->o->y;
-	z = coo->z - sph->o->z;
-	check = (x * x) + (y * y) + (z * z);
-	if (check == (sph->radius * sph->radius))
-		return (sph->color);
+	check = ((rt->ray_ori->x - rt->sphere->o->x) * (rt->ray_ori->x - rt->sphere->o->x))
+	+ ((rt->ray_ori->y - rt->sphere->o->y) * (rt->ray_ori->y - rt->sphere->o->y))
+	+ ((rt->ray_ori->z - rt->sphere->o->z) * (rt->ray_ori->z - rt->sphere->o->z));
+	if (check <= (rt->sphere->radius * rt->sphere->radius))
+		return (rt->sphere->color);
 	return (0x000000);
 }
 
@@ -32,7 +28,7 @@ int			ft_check_object(t_rt *rt)
 {
 	int		color;
 
-	color = ft_check_sphere(rt->ray_ori, rt->sphere);
+	color = ft_check_sphere(rt);
 	if (color != 0x000000)
 		return (color);
 	return (0x000000);

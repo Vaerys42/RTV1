@@ -15,6 +15,7 @@
 void		window(t_rt *rt)
 {
 	mlx_hook(rt->data->mlx_window, 2, 1L << 0, my_key_press, rt);
+	mlx_hook(rt->data->mlx_window, 17, 0, ft_exit_cross, rt);
 	mlx_loop(rt->data->mlx);
 }
 

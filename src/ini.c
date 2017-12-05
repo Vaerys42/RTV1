@@ -35,12 +35,12 @@ void	ft_ini_sphere(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->sphere->o = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
-	rt->sphere->radius = 300;
+	rt->sphere->radius = 200;
 	rt->sphere->color = 0xFFFFFF;
 	rt->sphere->next = NULL;
 	rt->sphere->o->x = 350;
-	rt->sphere->o->y = 300;
-	rt->sphere->o->z = 200;
+	rt->sphere->o->y = 400;
+	rt->sphere->o->z = 400;
 }
 
 void	ft_ini(t_rt *rt)
