@@ -40,7 +40,7 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->sphere->next = NULL;
 	rt->sphere->o->x = 350;
 	rt->sphere->o->y = 400;
-	rt->sphere->o->z = 400;
+	rt->sphere->o->z = 100;
 }
 
 void	ft_ini_plane(t_rt *rt)

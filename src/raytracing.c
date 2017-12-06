@@ -19,6 +19,8 @@ void	put_pxl(t_data *data, int x, int y, unsigned int c)
 	if (x * 4 >= WIN_LEN * 4 || x * 4 < 0)
 		return ;
 	i = (x * 4) + (y * data->s_l);
+	if (i > WIN_HEIGHT * WIN_LEN * 4)
+		return ;
 	data->image_string[i] = c;
 	data->image_string[++i] = c >> 8;
 	data->image_string[++i] = c >> 16;
