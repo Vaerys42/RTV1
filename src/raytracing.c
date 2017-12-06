@@ -26,15 +26,9 @@ void	put_pxl(t_data *data, int x, int y, unsigned int c)
 
 void		ft_ray(t_rt *rt, int x, int y)
 {
-	int		color;
+	int 	color;
 
-	color = 0x000000;
-	while (rt->ray->z < 500 && color == 0x000000)
-	{
-		color = ft_check_object(rt);
-		if (color == 0x000000)
-			ft_add_vect(rt->ray, rt->dir);
-	}
+	color = ft_check_object(rt);
 	if (color != 0x000000)
 		put_pxl(rt->data, x, y, color);
 }

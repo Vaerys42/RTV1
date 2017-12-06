@@ -18,6 +18,7 @@
 
 # include "libft/includes/libft.h"
 # include "minilibx_macos/mlx.h"
+# include "math.h"
 
 typedef	struct			s_coo
 {
@@ -66,6 +67,7 @@ typedef	struct 			s_sphere
 typedef	struct 			s_plane
 {
 	int					color;
+	t_coo				*o;
 	struct s_plane		*next;
 }						t_plane;
 
@@ -83,6 +85,7 @@ typedef	struct			s_rt
 	t_coo				*dir;
 	int					random;
 	t_sphere			*sphere;
+	t_plane				*plane;
 	t_coo				*ray_ori;
 }						t_rt;
 

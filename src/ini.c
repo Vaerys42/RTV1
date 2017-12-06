@@ -36,11 +36,24 @@ void	ft_ini_sphere(t_rt *rt)
 	if (!(rt->sphere->o = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
 	rt->sphere->radius = 200;
-	rt->sphere->color = 0xFFFFFF;
+	rt->sphere->color = 0x01FE2B;
 	rt->sphere->next = NULL;
 	rt->sphere->o->x = 350;
 	rt->sphere->o->y = 400;
 	rt->sphere->o->z = 400;
+}
+
+void	ft_ini_plane(t_rt *rt)
+{
+	if (!(rt->plane = (t_plane*)malloc(sizeof(t_plane))))
+		ft_malloc_error();
+	if (!(rt->plane->o = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	rt->plane->color = 0x1201FE;
+	rt->plane->next = NULL;
+	rt->plane->o->x = 10;
+	rt->plane->o->y = 0;
+	rt->plane->o->z = 0;
 }
 
 void	ft_ini(t_rt *rt)
@@ -61,4 +74,5 @@ void	ft_ini(t_rt *rt)
 	rt->dir->y = 0;
 	rt->dir->z = 1;
 	ft_ini_sphere(rt);
+	ft_ini_plane(rt);
 }
