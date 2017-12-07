@@ -67,7 +67,8 @@ typedef	struct 			s_sphere
 typedef	struct 			s_plane
 {
 	int					color;
-	t_coo				*o;
+	t_coo				*norm;
+	int 				dst;
 	struct s_plane		*next;
 }						t_plane;
 
@@ -80,9 +81,8 @@ typedef	struct 			s_ray
 typedef	struct			s_rt
 {
 	t_data				*data;
-	t_coo				*ray;
+	t_ray				*ray;
 	t_coo				*cam;
-	t_coo				*dir;
 	int					random;
 	t_sphere			*sphere;
 	t_plane				*plane;
@@ -107,5 +107,6 @@ void					ft_raytracing(t_rt *rt);
 int						ft_check_object(t_rt *rt);
 
 void					ft_add_vect(t_coo *vect1, t_coo *vect2);
+double					scal(t_coo *vect1, t_coo *vect2);
 
 #endif

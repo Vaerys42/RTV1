@@ -47,32 +47,33 @@ void	ft_ini_plane(t_rt *rt)
 {
 	if (!(rt->plane = (t_plane*)malloc(sizeof(t_plane))))
 		ft_malloc_error();
-	if (!(rt->plane->o = (t_coo*)malloc(sizeof(t_coo))))
+	if (!(rt->plane->norm = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
 	rt->plane->color = 0x1201FE;
 	rt->plane->next = NULL;
-	rt->plane->o->x = 10;
-	rt->plane->o->y = 0;
-	rt->plane->o->z = 0;
+	rt->plane->norm->x = 0;
+	rt->plane->norm->y = 10;
+	rt->plane->norm->z = 0;
+	rt->plane->dst = 200;
 }
 
 void	ft_ini(t_rt *rt)
 {
 	ft_create(rt);
-	if (!(rt->ray = (t_coo*)malloc(sizeof(t_coo))))
+	if (!(rt->ray = (t_ray*)malloc(sizeof(t_ray))))
 		ft_malloc_error();
 	if (!(rt->cam = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
-	if (!(rt->dir = (t_coo*)malloc(sizeof(t_coo))))
+	if (!(rt->ray->dir = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
 	if (!(rt->ray_ori = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
 	rt->cam->x = 100;
 	rt->cam->y = 100;
 	rt->cam->z = 0;
-	rt->dir->x = 0;
-	rt->dir->y = 0;
-	rt->dir->z = 1;
+	rt->ray->dir->x = 0;
+	rt->ray->dir->y = 0;
+	rt->ray->dir->z = 1;
 	ft_ini_sphere(rt);
 	ft_ini_plane(rt);
 }
