@@ -62,18 +62,24 @@ void	ft_ini(t_rt *rt)
 	ft_create(rt);
 	if (!(rt->ray = (t_ray*)malloc(sizeof(t_ray))))
 		ft_malloc_error();
-	if (!(rt->cam = (t_coo*)malloc(sizeof(t_coo))))
+	if (!(rt->cam = (t_ray*)malloc(sizeof(t_ray))))
 		ft_malloc_error();
 	if (!(rt->ray->dir = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
 	if (!(rt->ray_ori = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
-	rt->cam->x = 100;
-	rt->cam->y = 100;
-	rt->cam->z = 0;
-	rt->ray->dir->x = 0;
-	rt->ray->dir->y = 0;
-	rt->ray->dir->z = 1;
+	if (!(rt->cam->dir = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	if (!(rt->cam->o = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	rt->cam->o->x = 100;
+	rt->cam->o->y = 100;
+	rt->cam->o->z = 0;
+	rt->cam->dir->x = 0;
+	rt->cam->dir->y = 0;
+	rt->cam->dir->z = 1;
+	rt->ray->dir = rt->cam->dir;
+	//rt->up_left = ft_add_vect(rt->cam->o, ft_add_vect(ft_vect_mult(100, rt->cam->dir), ft_vect_mult()))
 	ft_ini_sphere(rt);
 	ft_ini_plane(rt);
 }

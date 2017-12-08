@@ -82,11 +82,12 @@ typedef	struct			s_rt
 {
 	t_data				*data;
 	t_ray				*ray;
-	t_coo				*cam;
+	t_ray				*cam;
 	int					random;
 	t_sphere			*sphere;
 	t_plane				*plane;
 	t_coo				*ray_ori;
+	double				up_left;
 }						t_rt;
 
 void					ft_malloc_error(void);
@@ -106,7 +107,8 @@ void					ft_raytracing(t_rt *rt);
 
 int						ft_check_object(t_rt *rt);
 
-void					ft_add_vect(t_coo *vect1, t_coo *vect2);
+t_coo					*ft_add_vect(t_coo *vect1, t_coo *vect2);
 double					scal(t_coo *vect1, t_coo *vect2);
+t_coo					*ft_vect_mult(double i, t_coo *vect);
 
 #endif
