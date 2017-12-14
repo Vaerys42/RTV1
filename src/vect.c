@@ -12,7 +12,7 @@
 
 #include "../rtv1.h"
 
-t_coo		*ft_vect_mult(double i, t_coo *vect)
+t_coo		*ft_mult_vect(float i, t_coo *vect)
 {
 	t_coo	*new;
 
@@ -21,6 +21,7 @@ t_coo		*ft_vect_mult(double i, t_coo *vect)
 	new->x = i * vect->x;
 	new->y = i * vect->y;
 	new->z = i * vect->z;
+	printf("mult\n");
 	return (new);
 }
 
@@ -33,7 +34,21 @@ t_coo		*ft_add_vect(t_coo *vect1, t_coo *vect2)
 	new->x = vect1->x + vect2->x;
 	new->y = vect1->y + vect2->y;
 	new->z = vect1->z + vect2->z;
+	printf("add\n");	
 	return (new);
+}
+
+t_coo		*ft_sub_vect(t_coo *vect1, t_coo *vect2)
+{
+	t_coo	*new;
+
+	if (!(new = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	new->x = vect1->x - vect2->x;
+	new->y = vect1->y - vect2->y;
+	new->z = vect1->z - vect2->z;
+	printf("sub\n");
+	return (new);	
 }
 
 double		scal(t_coo *vect1, t_coo *vect2)

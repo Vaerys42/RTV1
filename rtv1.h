@@ -15,6 +15,7 @@
 
 # define WIN_LEN 1000
 # define WIN_HEIGHT 800
+# define PLN_DST 1
 
 # include "libft/includes/libft.h"
 # include "minilibx_macos/mlx.h"
@@ -78,16 +79,30 @@ typedef	struct 			s_ray
 	t_coo				*dir;
 }						t_ray;
 
+typedef	struct 			s_cam
+{
+	t_coo				*pos;
+	t_coo				*forw;
+	t_coo				*up;
+	t_coo				*right;
+}						t_cam;
+
+typedef	struct 			s_view
+{
+	float 				screen_ratio;
+	float				height;
+	float				length;
+	t_coo				*up_left;
+}						t_view;
+
 typedef	struct			s_rt
 {
 	t_data				*data;
 	t_ray				*ray;
-	t_ray				*cam;
-	int					random;
+	t_cam				*cam;
 	t_sphere			*sphere;
 	t_plane				*plane;
-	t_coo				*ray_ori;
-	double				up_left;
+	t_view				*view;
 }						t_rt;
 
 void					ft_malloc_error(void);
@@ -109,6 +124,7 @@ int						ft_check_object(t_rt *rt);
 
 t_coo					*ft_add_vect(t_coo *vect1, t_coo *vect2);
 double					scal(t_coo *vect1, t_coo *vect2);
-t_coo					*ft_vect_mult(double i, t_coo *vect);
+t_coo					*ft_mult_vect(float i, t_coo *vect);
+t_coo					*ft_sub_vect(t_coo *vect1, t_coo *vect2);
 
 #endif

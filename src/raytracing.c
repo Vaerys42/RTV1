@@ -35,14 +35,6 @@ void		ft_ray(t_rt *rt, int x, int y)
 		put_pxl(rt->data, x, y, color);
 }
 
-void		ft_ini_ray(t_rt *rt, int x, int y)
-{
-	rt->ray_ori->x = x;
-	rt->ray_ori->y = y;
-	rt->ray_ori->z = 0;
-	rt->ray->o = rt->ray_ori;
-}
-
 void		ft_raytracing(t_rt *rt)
 {
 	int			x;
@@ -54,7 +46,6 @@ void		ft_raytracing(t_rt *rt)
 		x = -1;
 		while (++x <= WIN_LEN)
 		{
-			ft_ini_ray(rt, x, y);
 			ft_ray(rt, x, y);
 		}
 	}

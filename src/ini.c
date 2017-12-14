@@ -57,29 +57,52 @@ void	ft_ini_plane(t_rt *rt)
 	rt->plane->dst = 200;
 }
 
+void	ft_ini_viewplane(t_rt *rt)
+{
+	if (!(rt->view = (t_view*)malloc(sizeof(t_view))))
+		ft_malloc_error();
+	rt->view->screen_ratio = (float)WIN_LEN / WIN_HEIGHT;
+	rt->view->height = 2 * tan((90 * M_PI / 180) / 2);
+	rt->view->length = rt->view->screen_ratio * rt->view->height;
+	rt->view->up_left = ft_sub_vect(ft_add_vect(ft_add_vect(rt->cam->pos, ft_mult_vect(PLN_DST, rt->cam->forw)), ft_mult_vect(rt->view->height / 2, rt->cam->up)), ft_mult_vect(rt->view->length / 2, rt->cam->right));
+	printf("x: %f y:%f z:%f\n", rt->view->up_left->x, rt->view->up_left->y, rt->view->up_left->z);
+}
+
+void	ft_ini_cam(t_rt *rt)
+{
+	if (!(rt->cam = (t_cam*)malloc(sizeof(t_cam))))
+		ft_malloc_error();
+	if (!(rt->cam->pos = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	if (!(rt->cam->forw = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	if (!(rt->cam->up = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	if (!(rt->cam->right = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
+	rt->cam->forw->x = 0;
+	rt->cam->forw->y = 0;
+	rt->cam->forw->z = 1;
+	rt->cam->up->x = 0;
+	rt->cam->up->y = 1;
+	rt->cam->up->z = 0;
+	rt->cam->up->x = 1;
+	rt->cam->up->y = 0;
+	rt->cam->up->z = 0;
+	ft_ini_viewplane(rt);
+	rt->cam->pos->x = rt->view->length / 2;
+	rt->cam->pos->y = rt->view->height / 2;
+	rt->cam->pos->z = 0;
+}
+
 void	ft_ini(t_rt *rt)
 {
 	ft_create(rt);
 	if (!(rt->ray = (t_ray*)malloc(sizeof(t_ray))))
 		ft_malloc_error();
-	if (!(rt->cam = (t_ray*)malloc(sizeof(t_ray))))
-		ft_malloc_error();
 	if (!(rt->ray->dir = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
-	if (!(rt->ray_ori = (t_coo*)malloc(sizeof(t_coo))))
-		ft_malloc_error();
-	if (!(rt->cam->dir = (t_coo*)malloc(sizeof(t_coo))))
-		ft_malloc_error();
-	if (!(rt->cam->o = (t_coo*)malloc(sizeof(t_coo))))
-		ft_malloc_error();
-	rt->cam->o->x = 100;
-	rt->cam->o->y = 100;
-	rt->cam->o->z = 0;
-	rt->cam->dir->x = 0;
-	rt->cam->dir->y = 0;
-	rt->cam->dir->z = 1;
-	rt->ray->dir = rt->cam->dir;
-	//rt->up_left = ft_add_vect(rt->cam->o, ft_add_vect(ft_vect_mult(100, rt->cam->dir), ft_vect_mult()))
+	ft_ini_cam(rt);	
 	ft_ini_sphere(rt);
 	ft_ini_plane(rt);
 }
