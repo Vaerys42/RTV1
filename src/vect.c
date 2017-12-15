@@ -12,6 +12,14 @@
 
 #include "../rtv1.h"
 
+double		ft_norm_2(t_coo *vect)
+{
+	double	rslt;
+
+	rslt = sqrt(vect->x * vect->x + vect->y * vect->y + vect->z * vect->z);
+	return (rslt);
+}
+
 t_coo		*ft_div_vect(float i, t_coo *vect)
 {
 	t_coo	*new;

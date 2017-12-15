@@ -127,7 +127,8 @@ t_coo					*ft_add_vect(t_coo *vect1, t_coo *vect2);
 double					scal(t_coo *vect1, t_coo *vect2);
 t_coo					*ft_mult_vect(float i, t_coo *vect);
 t_coo					*ft_sub_vect(t_coo *vect1, t_coo *vect2);
-double					ft_norm(t_coo *vect1, t_coo *vect2);
+double					ft_norm(t_coo *point1, t_coo *point2);
 t_coo					*ft_div_vect(float i, t_coo *vect);
+double					ft_norm_2(t_coo *vect);
 
 #endif

@@ -18,7 +18,6 @@ OBJ =	$(patsubst src/%.c,obj/%.o,$(SRC))
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-		make -C libft/
 		make -C minilibx_macos/
 		gcc $(LIBS) $(OBJ) -o $(NAME)
 
@@ -27,11 +26,9 @@ obj/%.o: src/%.c
 	gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean :
-	make -C libft/ clean
 	/bin/rm -rf obj
 
 fclean : clean
-	make -C libft/ fclean
 	/bin/rm -rf $(NAME)
 
 re : fclean all
