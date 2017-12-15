@@ -38,9 +38,9 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->sphere->radius = 2;
 	rt->sphere->color = 0x01FE2B;
 	rt->sphere->next = NULL;
-	rt->sphere->o->x = 350;
-	rt->sphere->o->y = 400;
-	rt->sphere->o->z = 100;
+	rt->sphere->o->x = 5;
+	rt->sphere->o->y = 5;
+	rt->sphere->o->z = 10;
 }
 
 void	ft_ini_plane(t_rt *rt)

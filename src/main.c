@@ -26,7 +26,7 @@ int			main(void)
 	if (!(rt = (t_rt*)malloc(sizeof(t_rt))))
 		ft_malloc_error();
 	ft_ini(rt);
-	//ft_raytracing(rt);
+	ft_raytracing(rt);
 	window(rt);
 	return (0);
 }

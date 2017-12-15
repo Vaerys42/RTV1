@@ -35,6 +35,17 @@ void		ft_ray(t_rt *rt, int x, int y)
 		put_pxl(rt->data, x, y, color);
 }
 
+void		ft_ini_ray(t_rt *rt, int x, int y)
+{
+	double		norm;
+
+	rt->ray->o = ft_sub_vect(ft_add_vect(rt->view->up_left, ft_mult_vect(x,
+	ft_mult_vect(rt->view->length / WIN_LEN, rt->cam->right))),
+	ft_mult_vect(y, ft_mult_vect(rt->view->height / WIN_HEIGHT, rt->cam->up)));
+	norm = ft_norm(rt->cam->pos, rt->ray->o);
+	rt->ray->dir = ft_div_vect(norm, rt->ray->o);
+}
+
 void		ft_raytracing(t_rt *rt)
 {
 	int			x;
@@ -46,6 +57,7 @@ void		ft_raytracing(t_rt *rt)
 		x = -1;
 		while (++x <= WIN_LEN)
 		{
+			ft_ini_ray(rt, x, y);
 			ft_ray(rt, x, y);
 		}
 	}

@@ -77,6 +77,7 @@ typedef	struct 			s_ray
 {
 	t_coo				*o;
 	t_coo				*dir;
+	t_coo				*act;
 }						t_ray;
 
 typedef	struct 			s_cam
@@ -126,5 +127,7 @@ t_coo					*ft_add_vect(t_coo *vect1, t_coo *vect2);
 double					scal(t_coo *vect1, t_coo *vect2);
 t_coo					*ft_mult_vect(float i, t_coo *vect);
 t_coo					*ft_sub_vect(t_coo *vect1, t_coo *vect2);
+double					ft_norm(t_coo *vect1, t_coo *vect2);
+t_coo					*ft_div_vect(float i, t_coo *vect);
 
 #endif

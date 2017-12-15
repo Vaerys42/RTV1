@@ -24,15 +24,17 @@ int			ft_check_plane(t_rt *rt)
 */
 int			ft_check_sphere(t_rt *rt)
 {
+	double	a;
 	double	b;
 	double	c;
 	double	det;
 
-	b = 2 * (rt->ray->dir->x * (rt->ray_ori->x - rt->sphere->o->x) + rt->ray->dir->y * (rt->ray_ori->y 
-	- rt->sphere->o->y) + rt->ray->dir->z * (rt->ray_ori->z - rt->sphere->o->z));
-	c = (pow(rt->ray_ori->x - rt->sphere->o->x, 2) + pow(rt->ray_ori->y - rt->sphere->o->y, 2)
-	+ pow(rt->ray_ori->z - rt->sphere->o->z, 2)) - pow(rt->sphere->radius, 2);
-	det = b * b - 4 * c;
+	a = pow(rt->ray->dir->x, 2) + pow(rt->ray->dir->y, 2) + pow(rt->ray->dir->z, 2);
+	b = 2 * (rt->ray->dir->x * (rt->ray->o->x - rt->sphere->o->x) + rt->ray->dir->y * (rt->ray->o->y 
+	- rt->sphere->o->y) + rt->ray->dir->z * (rt->ray->o->z - rt->sphere->o->z));
+	c = (pow(rt->ray->o->x - rt->sphere->o->x, 2) + pow(rt->ray->o->y - rt->sphere->o->y, 2)
+	+ pow(rt->ray->o->z - rt->sphere->o->z, 2)) - pow(rt->sphere->radius, 2);
+	det = b * b - 4 * a * c;
 	if (det >= 0)
 		return (rt->sphere->color);
 	return (0x000000);
