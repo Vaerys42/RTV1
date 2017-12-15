@@ -15,7 +15,7 @@
 
 # define WIN_LEN 1000
 # define WIN_HEIGHT 800
-# define PLN_DST 1
+# define PLN_DST 1.25
 
 # include "libft/includes/libft.h"
 # include "minilibx_macos/mlx.h"
