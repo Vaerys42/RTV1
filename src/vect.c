@@ -21,7 +21,6 @@ t_coo		*ft_mult_vect(float i, t_coo *vect)
 	new->x = i * vect->x;
 	new->y = i * vect->y;
 	new->z = i * vect->z;
-	printf("mult\n");
 	return (new);
 }
 
@@ -34,7 +33,6 @@ t_coo		*ft_add_vect(t_coo *vect1, t_coo *vect2)
 	new->x = vect1->x + vect2->x;
 	new->y = vect1->y + vect2->y;
 	new->z = vect1->z + vect2->z;
-	printf("add\n");	
 	return (new);
 }
 
@@ -47,7 +45,6 @@ t_coo		*ft_sub_vect(t_coo *vect1, t_coo *vect2)
 	new->x = vect1->x - vect2->x;
 	new->y = vect1->y - vect2->y;
 	new->z = vect1->z - vect2->z;
-	printf("sub\n");
 	return (new);	
 }
 

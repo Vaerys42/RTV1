@@ -35,7 +35,7 @@ void	ft_ini_sphere(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->sphere->o = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
-	rt->sphere->radius = 200;
+	rt->sphere->radius = 2;
 	rt->sphere->color = 0x01FE2B;
 	rt->sphere->next = NULL;
 	rt->sphere->o->x = 350;
@@ -64,8 +64,12 @@ void	ft_ini_viewplane(t_rt *rt)
 	rt->view->screen_ratio = (float)WIN_LEN / WIN_HEIGHT;
 	rt->view->height = 2 * tan((90 * M_PI / 180) / 2);
 	rt->view->length = rt->view->screen_ratio * rt->view->height;
-	rt->view->up_left = ft_sub_vect(ft_add_vect(ft_add_vect(rt->cam->pos, ft_mult_vect(PLN_DST, rt->cam->forw)), ft_mult_vect(rt->view->height / 2, rt->cam->up)), ft_mult_vect(rt->view->length / 2, rt->cam->right));
-	printf("x: %f y:%f z:%f\n", rt->view->up_left->x, rt->view->up_left->y, rt->view->up_left->z);
+	rt->cam->pos->x = rt->view->length / 2;
+	rt->cam->pos->y = rt->view->height / 2;
+	rt->cam->pos->z = 0;
+	rt->view->up_left = ft_add_vect(ft_add_vect(rt->cam->pos, 
+	ft_mult_vect(PLN_DST, rt->cam->forw)),ft_sub_vect(ft_mult_vect(rt->view->height
+	/ 2, rt->cam->up), ft_mult_vect(rt->view->length / 2, rt->cam->right)));
 }
 
 void	ft_ini_cam(t_rt *rt)
@@ -86,13 +90,10 @@ void	ft_ini_cam(t_rt *rt)
 	rt->cam->up->x = 0;
 	rt->cam->up->y = 1;
 	rt->cam->up->z = 0;
-	rt->cam->up->x = 1;
-	rt->cam->up->y = 0;
-	rt->cam->up->z = 0;
+	rt->cam->right->x = 1;
+	rt->cam->right->y = 0;
+	rt->cam->right->z = 0;
 	ft_ini_viewplane(rt);
-	rt->cam->pos->x = rt->view->length / 2;
-	rt->cam->pos->y = rt->view->height / 2;
-	rt->cam->pos->z = 0;
 }
 
 void	ft_ini(t_rt *rt)
