@@ -13,9 +13,9 @@
 #ifndef RTV1_H
 # define RTV1_H
 
-# define WIN_LEN 1000
-# define WIN_HEIGHT 500
-# define PLN_DST 1.25
+# define WIN_LEN 600
+# define WIN_HEIGHT 857
+# define PLN_DST 1
 
 # include "libft/includes/libft.h"
 # include "minilibx_macos/mlx.h"
