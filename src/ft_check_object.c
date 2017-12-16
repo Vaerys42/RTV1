@@ -22,7 +22,7 @@ int			ft_check_plane(t_rt *rt)
 	return (0x000000);
 }
 */
-int			ft_check_sphere(t_rt *rt)
+float			ft_check_sphere(t_rt *rt)
 {
 	double	a;
 	double	b;
@@ -35,20 +35,22 @@ int			ft_check_sphere(t_rt *rt)
 	c = (pow(rt->ray->o->x - rt->sphere->o->x, 2) + pow(rt->ray->o->y - rt->sphere->o->y, 2)
 	+ pow(rt->ray->o->z - rt->sphere->o->z, 2)) - pow(rt->sphere->radius, 2);
 	det = b * b - 4 * a * c;
-	if (det >= 0)
-		return (rt->sphere->color);
-	return (0x000000);
+	if (det > 0)
+		return ((-b - sqrt(det)) / (2 * a));
+	if (det == 0)
+		return ((-b + sqrt(det)) / (2 * a));
+	return (0);
 }
 
 int			ft_check_object(t_rt *rt)
 {
-	int		color;
+	float		color;
 
 /*	color = ft_check_plane(rt);
 	if (color != 0x000000)
 		return (color);*/
 	color = ft_check_sphere(rt);
-	if (color != 0x000000)
-		return (color);
+	if (color != 0)
+		return (rt->sphere->color);
 	return (0x000000);
 }

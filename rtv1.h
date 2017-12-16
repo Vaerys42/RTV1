@@ -14,7 +14,7 @@
 # define RTV1_H
 
 # define WIN_LEN 1000
-# define WIN_HEIGHT 800
+# define WIN_HEIGHT 500
 # define PLN_DST 1.25
 
 # include "libft/includes/libft.h"
