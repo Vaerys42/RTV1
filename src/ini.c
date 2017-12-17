@@ -35,11 +35,15 @@ void	ft_ini_sphere(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->sphere->o = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
+	if (!(rt->sphere->color = (t_color*)malloc(sizeof(t_color))))
+		ft_malloc_error();
 	rt->sphere->radius = 1;
-	rt->sphere->color = 0x01FE2B;
+	rt->sphere->color->r = 0;
+	rt->sphere->color->g = 1;
+	rt->sphere->color->b = 0;
 	rt->sphere->next = NULL;
-	rt->sphere->o->x = rt->cam->pos->x;
-	rt->sphere->o->y = rt->cam->pos->y + 3;
+	rt->sphere->o->x = rt->cam->pos->x + 4;
+	rt->sphere->o->y = rt->cam->pos->y + 4;
 	rt->sphere->o->z = 20;
 }
 
@@ -49,7 +53,11 @@ void	ft_ini_plane(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->plane->norm = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
-	rt->plane->color = 0x1201FE;
+	if (!(rt->plane->color = (t_color*)malloc(sizeof(t_color))))
+		ft_malloc_error();
+	rt->plane->color->r = 0;
+	rt->plane->color->g = 0;
+	rt->plane->color->b = 1;
 	rt->plane->next = NULL;
 	rt->plane->norm->x = 0;
 	rt->plane->norm->y = 10;
@@ -65,8 +73,8 @@ void	ft_ini_viewplane(t_rt *rt)
 		ft_malloc_error();
 	focal = sqrt(WIN_LEN * WIN_LEN + WIN_HEIGHT * WIN_HEIGHT) / (2 * tan((90 * M_PI / 180) / 2)); 
 	rt->view->screen_ratio = (float)WIN_LEN / WIN_HEIGHT;
-	rt->view->height = 0.5;//(tan((90 * M_PI / 180) / 2));
-	rt->view->length = 0.35;//rt->view->screen_ratio * rt->view->height;
+	rt->view->height = 2 * PLN_DST * tan((30 * M_PI / 180) / 2);
+	rt->view->length = rt->view->screen_ratio * rt->view->height;
 	rt->cam->pos->x = rt->view->length / 2;
 	rt->cam->pos->y = rt->view->height / 2;
 	rt->cam->pos->z = 0;
@@ -106,6 +114,7 @@ void	ft_ini(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->ray->dir = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
+	if (!(rt->color = (t_color*)malloc(sizeof(t_color))))
 	ft_ini_cam(rt);	
 	ft_ini_sphere(rt);
 	ft_ini_plane(rt);

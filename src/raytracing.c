@@ -12,7 +12,7 @@
 
 #include "../rtv1.h"
 
-void	put_pxl(t_data *data, int x, int y, unsigned int c)
+void	put_pxl(t_data *data, int x, int y, t_color *color)
 {
 	int		i;
 
@@ -21,18 +21,24 @@ void	put_pxl(t_data *data, int x, int y, unsigned int c)
 	i = (x * 4) + (y * data->s_l);
 	if (i > WIN_HEIGHT * WIN_LEN * 4)
 		return ;
-	data->image_string[i] = c;
-	data->image_string[++i] = c >> 8;
-	data->image_string[++i] = c >> 16;
+	data->image_string[i] = color->r;
+	data->image_string[++i] = color->g;
+	data->image_string[++i] = color->b;
+}
+
+t_color		*ft_convert(t_color *color)
+{
+	color->r = (color->r * 255);
+	color->g = (int)(color->g * 255);
+	color->b = (int)(color->b * 255);
+	return (color);
 }
 
 void		ft_ray(t_rt *rt, int x, int y)
 {
-	int 	color;
-
-	color = ft_check_object(rt);
-	if (color != 0x000000)
-		put_pxl(rt->data, x, y, color);
+	rt->color = ft_check_object(rt);
+	rt->color = ft_convert(rt->color);
+	put_pxl(rt->data, x, y, rt->color);
 }
 
 void		ft_ini_ray(t_rt *rt, int x, int y)
@@ -40,9 +46,6 @@ void		ft_ini_ray(t_rt *rt, int x, int y)
 	double		norm;
 
 	rt->ray->o = ft_sub_vect(ft_add_vect(rt->view->up_left, ft_mult_vect(x, ft_mult_vect(rt->view->length / WIN_LEN, rt->cam->right))), ft_mult_vect(y, ft_mult_vect(rt->view->height / WIN_HEIGHT, rt->cam->up)));
-	//printf("x: %f y: %f z: %f\n", rt->ray->o->x, rt->ray->o->y, rt->ray->o->z);
-	/*norm = ft_norm(rt->cam->pos, rt->ray->o);
-	rt->ray->dir = ft_div_vect(norm, rt->ray->o);*/
 	rt->ray->dir = ft_sub_vect(rt->cam->pos, rt->ray->o);
 	norm = ft_norm_2(rt->ray->dir);
 	rt->ray->dir = ft_div_vect(norm, rt->ray->dir);

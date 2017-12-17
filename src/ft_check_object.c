@@ -42,7 +42,7 @@ float			ft_check_sphere(t_rt *rt)
 	return (0);
 }
 
-int			ft_check_object(t_rt *rt)
+t_color			*ft_check_object(t_rt *rt)
 {
 	float		color;
 

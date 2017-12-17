@@ -13,13 +13,20 @@
 #ifndef RTV1_H
 # define RTV1_H
 
-# define WIN_LEN 600
-# define WIN_HEIGHT 857
-# define PLN_DST 1
+# define WIN_LEN 1000
+# define WIN_HEIGHT 800
+# define PLN_DST 15
 
 # include "libft/includes/libft.h"
 # include "minilibx_macos/mlx.h"
 # include "math.h"
+
+typedef	struct 			s_color
+{
+	float				r;
+	float				g;
+	float				b;
+}						t_color;
 
 typedef	struct			s_coo
 {
@@ -44,7 +51,7 @@ typedef struct 			s_cylinder
 {
 	t_coo				*o;
 	float				radius;
-	int					color;
+	t_color				*color;
 	float				height;
 }						t_cylinder;
 
@@ -52,7 +59,7 @@ typedef	struct 			s_cone
 {
 	t_coo				*o;
 	float				radius;
-	int					color;
+	t_color				*color;
 	float				height;
 	struct s_cone		*next;
 }						t_cone;
@@ -61,13 +68,13 @@ typedef	struct 			s_sphere
 {
 	t_coo				*o;
 	float				radius;
-	int					color;
+	t_color				*color;
 	struct s_sphere		*next;
 }						t_sphere;
 
 typedef	struct 			s_plane
 {
-	int					color;
+	t_color				*color;
 	t_coo				*norm;
 	int 				dst;
 	struct s_plane		*next;
@@ -104,6 +111,7 @@ typedef	struct			s_rt
 	t_sphere			*sphere;
 	t_plane				*plane;
 	t_view				*view;
+	t_color				*color;
 }						t_rt;
 
 void					ft_malloc_error(void);
@@ -114,14 +122,14 @@ void					ft_ini(t_rt *rt);
 
 int						my_key_press(int key, t_rt *rt);
 int						ft_exit_cross(t_rt *rt);
-void					put_pxl(t_data *data, int x, int y, unsigned int c);
+void					put_pxl(t_data *data, int x, int y, t_color *color);
 
 void					ft_parser(char *path, t_rt *rt);
 void					ft_create_sphere(t_rt *rt, char **line);
 
 void					ft_raytracing(t_rt *rt);
 
-int						ft_check_object(t_rt *rt);
+t_color					*ft_check_object(t_rt *rt);
 
 t_coo					*ft_add_vect(t_coo *vect1, t_coo *vect2);
 double					scal(t_coo *vect1, t_coo *vect2);
