@@ -42,15 +42,17 @@ float			ft_check_sphere(t_rt *rt)
 	return (0);
 }
 
-t_color			*ft_check_object(t_rt *rt)
+void			ft_check_object(t_rt *rt)
 {
-	float		color;
+	float		dst;
 
 /*	color = ft_check_plane(rt);
 	if (color != 0x000000)
 		return (color);*/
-	color = ft_check_sphere(rt);
-	if (color != 0)
-		return (rt->sphere->color);
-	return (0x000000);
+	dst = ft_check_sphere(rt);
+	if (dst != 0)
+		rt->color = rt->sphere->color;
+	else
+		zero_color(rt);
+	return ;
 }

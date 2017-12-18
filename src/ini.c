@@ -55,14 +55,18 @@ void	ft_ini_plane(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->plane->color = (t_color*)malloc(sizeof(t_color))))
 		ft_malloc_error();
+	if (!(rt->plane->o = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
 	rt->plane->color->r = 0;
 	rt->plane->color->g = 0;
 	rt->plane->color->b = 1;
 	rt->plane->next = NULL;
 	rt->plane->norm->x = 0;
-	rt->plane->norm->y = 10;
+	rt->plane->norm->y = 1;
 	rt->plane->norm->z = 0;
-	rt->plane->dst = 200;
+	rt->plane->o->x = 0;
+	rt->plane->o->y = 0;
+	rt->plane->o->z = 0;
 }
 
 void	ft_ini_viewplane(t_rt *rt)
@@ -115,6 +119,7 @@ void	ft_ini(t_rt *rt)
 	if (!(rt->ray->dir = (t_coo*)malloc(sizeof(t_coo))))
 		ft_malloc_error();
 	if (!(rt->color = (t_color*)malloc(sizeof(t_color))))
+		ft_malloc_error();
 	ft_ini_cam(rt);	
 	ft_ini_sphere(rt);
 	ft_ini_plane(rt);

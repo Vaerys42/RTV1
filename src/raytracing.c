@@ -12,6 +12,13 @@
 
 #include "../rtv1.h"
 
+void	zero_color(t_rt *rt)
+{
+	rt->color->r = 0;
+	rt->color->g = 0;
+	rt->color->b = 0;
+}
+
 void	put_pxl(t_data *data, int x, int y, t_color *color)
 {
 	int		i;
@@ -26,18 +33,19 @@ void	put_pxl(t_data *data, int x, int y, t_color *color)
 	data->image_string[++i] = color->b;
 }
 
-t_color		*ft_convert(t_color *color)
+void		ft_convert(t_rt *rt)
 {
-	color->r = (color->r * 255);
-	color->g = (int)(color->g * 255);
-	color->b = (int)(color->b * 255);
-	return (color);
+	rt->color->r = (int)(rt->color->r * 255);
+	rt->color->g = (int)(rt->color->g * 255);
+	rt->color->b = (int)(rt->color->b * 255);
 }
 
 void		ft_ray(t_rt *rt, int x, int y)
 {
-	rt->color = ft_check_object(rt);
-	rt->color = ft_convert(rt->color);
+	ft_check_object(rt);
+	ft_convert(rt);
+	if (rt->color->r == 0 && rt->color->g == 0 && rt->color->b == 0)
+		return ;
 	put_pxl(rt->data, x, y, rt->color);
 }
 

@@ -76,7 +76,7 @@ typedef	struct 			s_plane
 {
 	t_color				*color;
 	t_coo				*norm;
-	int 				dst;
+	t_coo 				*o;
 	struct s_plane		*next;
 }						t_plane;
 
@@ -129,7 +129,7 @@ void					ft_create_sphere(t_rt *rt, char **line);
 
 void					ft_raytracing(t_rt *rt);
 
-t_color					*ft_check_object(t_rt *rt);
+void					ft_check_object(t_rt *rt);
 
 t_coo					*ft_add_vect(t_coo *vect1, t_coo *vect2);
 double					scal(t_coo *vect1, t_coo *vect2);
@@ -138,5 +138,7 @@ t_coo					*ft_sub_vect(t_coo *vect1, t_coo *vect2);
 double					ft_norm(t_coo *point1, t_coo *point2);
 t_coo					*ft_div_vect(float i, t_coo *vect);
 double					ft_norm_2(t_coo *vect);
+
+void					zero_color(t_rt *rt);
 
 #endif
