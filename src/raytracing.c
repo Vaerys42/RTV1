@@ -28,6 +28,8 @@ void	put_pxl(t_data *data, int x, int y, t_color *color)
 	i = (x * 4) + (y * data->s_l);
 	if (i > WIN_HEIGHT * WIN_LEN * 4)
 		return ;
+	if (color->g != 0)
+		printf("%f\n", color->g);
 	data->image_string[i] = color->r;
 	data->image_string[++i] = color->g;
 	data->image_string[++i] = color->b;

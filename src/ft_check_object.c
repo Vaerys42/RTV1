@@ -36,9 +36,13 @@ float			ft_check_sphere(t_rt *rt)
 	+ pow(rt->ray->o->z - rt->sphere->o->z, 2)) - pow(rt->sphere->radius, 2);
 	det = b * b - 4 * a * c;
 	if (det > 0)
-		return ((-b - sqrt(det)) / (2 * a));
+	{
+		if (((-b - sqrt(det)) / (2 * a)) > ((-b - sqrt(det)) / (2 * a)))
+			return ((-b - sqrt(det)) / (2 * a));
+		return (((-b - sqrt(det)) / (2 * a)));
+	}
 	if (det == 0)
-		return ((-b + sqrt(det)) / (2 * a));
+		return (-b / (2 * a));
 	return (0);
 }
 
