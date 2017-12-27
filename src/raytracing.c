@@ -19,7 +19,7 @@ void	zero_color(t_rt *rt)
 	rt->color->b = 0;
 }
 
-void	put_pxl(t_data *data, int x, int y, t_color *color)
+void	put_pxl(t_data *data, int x, int y, t_icolor *color)
 {
 	int		i;
 
@@ -35,9 +35,9 @@ void	put_pxl(t_data *data, int x, int y, t_color *color)
 
 void		ft_convert(t_rt *rt)
 {
-	rt->color->r = (unsigned char)(rt->color->r * 255);
-	rt->color->g = (unsigned char)(rt->color->g * 255);
-	rt->color->b = (unsigned char)(rt->color->b * 255);
+	rt->icolor->r = (rt->color->r * 255);
+	rt->icolor->g = (rt->color->g * 255);
+	rt->icolor->b = (rt->color->b * 255);
 }
 
 void		ft_ray(t_rt *rt, int x, int y)
@@ -46,7 +46,7 @@ void		ft_ray(t_rt *rt, int x, int y)
 	//if (rt->color->r == 0 && rt->color->g == 0 && rt->color->b == 0)
 	//	return ;
 	ft_convert(rt);
-	put_pxl(rt->data, x, y, rt->color);
+	put_pxl(rt->data, x, y, rt->icolor);
 }
 
 void		ft_ini_ray(t_rt *rt, int x, int y)

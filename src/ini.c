@@ -120,6 +120,8 @@ void	ft_ini(t_rt *rt)
 		ft_malloc_error();
 	if (!(rt->color = (t_color*)malloc(sizeof(t_color))))
 		ft_malloc_error();
+	if (!(rt->icolor = (t_icolor*)malloc(sizeof(t_icolor))))
+		ft_malloc_error();
 	ft_ini_cam(rt);	
 	ft_ini_sphere(rt);
 	ft_ini_plane(rt);

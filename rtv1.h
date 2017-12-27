@@ -28,6 +28,13 @@ typedef	struct 			s_color
 	float				b;
 }						t_color;
 
+typedef struct 			s_icolor
+{
+	int 				r;
+	int 				g;
+	int 				b;
+}						t_icolor;
+
 typedef	struct			s_coo
 {
 	float				x;
@@ -112,6 +119,7 @@ typedef	struct			s_rt
 	t_plane				*plane;
 	t_view				*view;
 	t_color				*color;
+	t_icolor			*icolor;
 }						t_rt;
 
 void					ft_malloc_error(void);
@@ -122,7 +130,7 @@ void					ft_ini(t_rt *rt);
 
 int						my_key_press(int key, t_rt *rt);
 int						ft_exit_cross(t_rt *rt);
-void					put_pxl(t_data *data, int x, int y, t_color *color);
+void					put_pxl(t_data *data, int x, int y, t_icolor *color);
 
 void					ft_parser(char *path, t_rt *rt);
 void					ft_create_sphere(t_rt *rt, char **line);
