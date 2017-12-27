@@ -37,8 +37,8 @@ float			ft_check_sphere(t_rt *rt)
 	det = b * b - 4 * a * c;
 	if (det >= 0)
 	{
-		if (((-b - sqrt(det)) / (2 * a)) > ((-b - sqrt(det)) / (2 * a)))
-			return ((-b - sqrt(det)) / (2 * a));
+		if (((-b - sqrt(det)) / (2 * a)) > ((-b + sqrt(det)) / (2 * a)))
+			return ((-b + sqrt(det)) / (2 * a));
 		return (((-b - sqrt(det)) / (2 * a)));
 	}
 	return (0);
@@ -53,10 +53,8 @@ void			ft_check_object(t_rt *rt)
 		return (color);*/
 	dst = 0;
 	dst = ft_check_sphere(rt);
+	rt->color = rt->plane->color;
 	if (dst != 0)
-	{
 		rt->color = rt->sphere->color;
-		printf("%f\n", rt->color->g);
-	}
 	return ;
 }
