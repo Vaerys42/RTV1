@@ -27,6 +27,8 @@ void		ft_get_light(t_rt *rt)
 	rt->angle_ray->o = ft_sub_vect(rt->inter, rt->sphere->o);
 	rt->angle_ray->dir = ft_div_vect(ft_norm_2(rt->angle_ray->o), rt->angle_ray->o);
 	angle = scal(rt->light_ray->dir, rt->angle_ray->dir);
+	if (angle < 0)
+		rt->color = rt->zcolor;
 }
 
 /*
