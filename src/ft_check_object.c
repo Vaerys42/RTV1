@@ -20,10 +20,13 @@ void		ft_get_point(t_rt *rt)
 
 void		ft_get_light(t_rt *rt)
 {
+	double		angle;
+
 	rt->light_ray->o = ft_sub_vect(rt->light->o, rt->inter);
-	rt->light_ray->dir = ft_div_vect(ft_norm2(rt->light_ray->o), rt->light_ray->o);
+	rt->light_ray->dir = ft_div_vect(ft_norm_2(rt->light_ray->o), rt->light_ray->o);
 	rt->angle_ray->o = ft_sub_vect(rt->inter, rt->sphere->o);
-	rt->angle_ray->dir = ft_div_vect(ft_norm2(rt->angle_ray->o), rt->angle_ray->o);
+	rt->angle_ray->dir = ft_div_vect(ft_norm_2(rt->angle_ray->o), rt->angle_ray->o);
+	angle = scal(rt->light_ray->dir, rt->angle_ray->dir);
 }
 
 /*
@@ -67,8 +70,9 @@ void			ft_check_object(t_rt *rt)
 	rt->dst = ft_check_sphere(rt);
 	rt->color = rt->zcolor;
 	if (rt->dst != 0)
-		rt->color = rt->sphere->color;
-	ft_get_point(rt);
-	ft_get_light(rt);
+	{	rt->color = rt->sphere->color;
+		ft_get_point(rt);
+		ft_get_light(rt);
+	}
 	return ;
 }

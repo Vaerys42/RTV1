@@ -115,6 +115,8 @@ void	ft_ini_light(t_rt *rt)
 {
 	if (!(rt->light = (t_light*)malloc(sizeof(t_light))))
 		ft_malloc_error();
+	if (!(rt->light->o = (t_coo*)malloc(sizeof(t_coo))))
+		ft_malloc_error();
 	rt->light->o->x = rt->cam->pos->x;
 	rt->light->o->y = 5;
 	rt->light->o->z = 15;
