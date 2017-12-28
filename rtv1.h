@@ -87,11 +87,16 @@ typedef	struct 			s_plane
 	struct s_plane		*next;
 }						t_plane;
 
+typedef struct 			s_light
+{
+	t_coo 				*o;
+	float				power;
+}						t_light;
+
 typedef	struct 			s_ray
 {
 	t_coo				*o;
 	t_coo				*dir;
-	t_coo				*act;
 }						t_ray;
 
 typedef	struct 			s_cam
@@ -115,11 +120,17 @@ typedef	struct			s_rt
 	t_data				*data;
 	t_ray				*ray;
 	t_cam				*cam;
+	t_light				*light;
 	t_sphere			*sphere;
 	t_plane				*plane;
 	t_view				*view;
 	t_color				*color;
 	t_icolor			*icolor;
+	t_coo 				*inter;
+	t_color 			*zcolor;
+	float				dst;
+	t_ray				*light_ray;
+	t_ray				*angle_ray;
 }						t_rt;
 
 void					ft_malloc_error(void);

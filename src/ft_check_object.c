@@ -11,6 +11,21 @@
 /* ************************************************************************** */
 
 #include "../rtv1.h"
+
+void		ft_get_point(t_rt *rt)
+{
+	rt->inter = ft_mult_vect(rt->dst, rt->ray->dir);
+	rt->inter = ft_add_vect(rt->cam->pos, rt->inter);
+}
+
+void		ft_get_light(t_rt *rt)
+{
+	rt->light_ray->o = ft_sub_vect(rt->light->o, rt->inter);
+	rt->light_ray->dir = ft_div_vect(ft_norm2(rt->light_ray->o), rt->light_ray->o);
+	rt->angle_ray->o = ft_sub_vect(rt->inter, rt->sphere->o);
+	rt->angle_ray->dir = ft_div_vect(ft_norm2(rt->angle_ray->o), rt->angle_ray->o);
+}
+
 /*
 int			ft_check_plane(t_rt *rt)
 {
@@ -46,15 +61,14 @@ float			ft_check_sphere(t_rt *rt)
 
 void			ft_check_object(t_rt *rt)
 {
-	float		dst;
-
 /*	color = ft_check_plane(rt);
 	if (color != 0x000000)
 		return (color);*/
-	dst = 0;
-	dst = ft_check_sphere(rt);
-	rt->color = rt->plane->color;
-	if (dst != 0)
+	rt->dst = ft_check_sphere(rt);
+	rt->color = rt->zcolor;
+	if (rt->dst != 0)
 		rt->color = rt->sphere->color;
+	ft_get_point(rt);
+	ft_get_light(rt);
 	return ;
 }

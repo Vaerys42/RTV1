@@ -12,13 +12,6 @@
 
 #include "../rtv1.h"
 
-void	zero_color(t_rt *rt)
-{
-	rt->color->r = 0;
-	rt->color->g = 0;
-	rt->color->b = 0;
-}
-
 void	put_pxl(t_data *data, int x, int y, t_icolor *color)
 {
 	int		i;
