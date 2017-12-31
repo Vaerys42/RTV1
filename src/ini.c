@@ -42,8 +42,8 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->sphere->color->g = 1;
 	rt->sphere->color->b = 0;
 	rt->sphere->next = NULL;
-	rt->sphere->o->x = rt->cam->pos->x;
-	rt->sphere->o->y = rt->cam->pos->y;
+	rt->sphere->o->x = rt->cam->pos->x + 2;
+	rt->sphere->o->y = rt->cam->pos->y + 2;
 	rt->sphere->o->z = 20;
 }
 
