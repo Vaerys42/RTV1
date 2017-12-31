@@ -42,8 +42,8 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->sphere->color->g = 1;
 	rt->sphere->color->b = 0;
 	rt->sphere->next = NULL;
-	rt->sphere->o->x = rt->cam->pos->x + 4;
-	rt->sphere->o->y = rt->cam->pos->y + 4;
+	rt->sphere->o->x = rt->cam->pos->x;
+	rt->sphere->o->y = rt->cam->pos->y;
 	rt->sphere->o->z = 20;
 }
 
@@ -123,7 +123,7 @@ void	ft_ini_light(t_rt *rt)
 	rt->light->color->g = 1.0;
 	rt->light->color->b = 1.0;
 	rt->light->o->x = rt->cam->pos->x;
-	rt->light->o->y = 5;
+	rt->light->o->y = rt->cam->pos->y;
 	rt->light->o->z = 15;
 	rt->light->power = 1.0;
 }
