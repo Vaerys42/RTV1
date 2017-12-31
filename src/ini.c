@@ -42,8 +42,8 @@ void	ft_ini_sphere(t_rt *rt)
 	rt->sphere->color->g = 1;
 	rt->sphere->color->b = 0;
 	rt->sphere->next = NULL;
-	rt->sphere->o->x = rt->cam->pos->x + 2;
-	rt->sphere->o->y = rt->cam->pos->y + 2;
+	rt->sphere->o->x = rt->cam->pos->x - 0.2;
+	rt->sphere->o->y = rt->cam->pos->y;
 	rt->sphere->o->z = 20;
 }
 
@@ -71,11 +71,8 @@ void	ft_ini_plane(t_rt *rt)
 
 void	ft_ini_viewplane(t_rt *rt)
 {
-	double			focal;
-
 	if (!(rt->view = (t_view*)malloc(sizeof(t_view))))
 		ft_malloc_error();
-	focal = sqrt(WIN_LEN * WIN_LEN + WIN_HEIGHT * WIN_HEIGHT) / (2 * tan((90 * M_PI / 180) / 2)); 
 	rt->view->screen_ratio = (float)WIN_LEN / WIN_HEIGHT;
 	rt->view->height = 2 * PLN_DST * tan((30 * M_PI / 180) / 2);
 	rt->view->length = rt->view->screen_ratio * rt->view->height;

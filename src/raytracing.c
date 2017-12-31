@@ -28,6 +28,12 @@ void	put_pxl(t_data *data, int x, int y, t_icolor *color)
 
 void		ft_convert(t_rt *rt)
 {
+	if (rt->color->r > 1)
+		rt->color->r = 1;
+	if (rt->color->g > 1)
+		rt->color->g = 1;
+	if (rt->color->b > 1)
+		rt->color->b = 1;
 	rt->icolor->r = (rt->color->r * 255);
 	rt->icolor->g = (rt->color->g * 255);
 	rt->icolor->b = (rt->color->b * 255);

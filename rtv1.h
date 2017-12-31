@@ -23,9 +23,9 @@
 
 typedef	struct 			s_color
 {
-	float				r;
-	float				g;
-	float				b;
+	double				r;
+	double				g;
+	double				b;
 }						t_color;
 
 typedef struct 			s_icolor
@@ -37,9 +37,9 @@ typedef struct 			s_icolor
 
 typedef	struct			s_coo
 {
-	float				x;
-	float				y;
-	float				z;
+	double				x;
+	double				y;
+	double				z;
 }						t_coo;
 
 typedef	struct			s_data
@@ -57,24 +57,24 @@ typedef	struct			s_data
 typedef struct 			s_cylinder
 {
 	t_coo				*o;
-	float				radius;
+	double				radius;
 	t_color				*color;
-	float				height;
+	double				height;
 }						t_cylinder;
 
 typedef	struct 			s_cone
 {
 	t_coo				*o;
-	float				radius;
+	double				radius;
 	t_color				*color;
-	float				height;
+	double				height;
 	struct s_cone		*next;
 }						t_cone;
 
 typedef	struct 			s_sphere
 {
 	t_coo				*o;
-	float				radius;
+	double				radius;
 	t_color				*color;
 	struct s_sphere		*next;
 }						t_sphere;
@@ -91,7 +91,7 @@ typedef struct 			s_light
 {
 	t_coo 				*o;
 	t_color 			*color;
-	float				power;
+	double				power;
 }						t_light;
 
 typedef	struct 			s_ray
@@ -110,9 +110,9 @@ typedef	struct 			s_cam
 
 typedef	struct 			s_view
 {
-	float 				screen_ratio;
-	float				height;
-	float				length;
+	double 				screen_ratio;
+	double				height;
+	double				length;
 	t_coo				*up_left;
 }						t_view;
 
@@ -129,7 +129,7 @@ typedef	struct			s_rt
 	t_icolor			*icolor;
 	t_coo 				*inter;
 	t_color 			*zcolor;
-	float				dst;
+	double				dst;
 	t_ray				*light_ray;
 	t_ray				*angle_ray;
 }						t_rt;
