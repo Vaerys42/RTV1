@@ -44,12 +44,9 @@ void		ft_ray(t_rt *rt, int x, int y)
 
 void		ft_ini_ray(t_rt *rt, int x, int y)
 {
-	double		norm;
-
 	rt->ray->o = ft_sub_vect(ft_add_vect(rt->view->up_left, ft_mult_vect(x, ft_mult_vect(rt->view->length / WIN_LEN, rt->cam->right))), ft_mult_vect(y, ft_mult_vect(rt->view->height / WIN_HEIGHT, rt->cam->up)));
-	rt->ray->dir = ft_sub_vect(rt->cam->pos, rt->ray->o);
-	norm = ft_norm_2(rt->ray->dir);
-	rt->ray->dir = ft_div_vect(norm, rt->ray->dir);
+	rt->ray->dir = ft_sub_vect(rt->ray->o, rt->cam->pos);
+	rt->ray->dir = ft_div_vect(ft_norm_2(rt->ray->dir), rt->ray->dir);
 }
 
 void		ft_raytracing(t_rt *rt)

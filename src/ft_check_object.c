@@ -29,6 +29,7 @@ void		ft_get_light(t_rt *rt)
 	angle = scal(rt->light_ray->dir, rt->angle_ray->dir);
 	if (angle < 0)
 		rt->color = rt->zcolor;
+	
 }
 
 /*
@@ -74,7 +75,7 @@ void			ft_check_object(t_rt *rt)
 	if (rt->dst != 0)
 	{	rt->color = rt->sphere->color;
 		ft_get_point(rt);
-		ft_get_light(rt);
+		//ft_get_light(rt);
 	}
 	return ;
 }

@@ -90,6 +90,7 @@ typedef	struct 			s_plane
 typedef struct 			s_light
 {
 	t_coo 				*o;
+	t_color 			*color;
 	float				power;
 }						t_light;
 
